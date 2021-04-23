@@ -16,17 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddActivityActivity"></activity>
-        <activity android:name=".AddMoodActivity"></activity>
-        <activity android:name=".AddMoodEntryActivity"></activity>
-        <activity android:name=".BackupActivity"></activity>
-        <activity android:name=".CalendarActivity"></activity>
-        <activity android:name=".SettingsActivity"></activity>
-        <activity android:name=".StatsActivity"></activity>
-        <activity android:name=".UpdateActivityActivity"></activity>
-        <activity android:name=".UpdateMoodActivity"></activity>
-        <activity android:name=".UpdateMoodEntryActivity"></activity>
-        <activity android:name=".UpdateNotificationActivity"></activity>
+        <activity android:name=".AddActivityActivity"/>
+        <activity android:name=".AddMoodActivity"/>
+        <activity android:name=".AddMoodEntryActivity"/>
+        <activity android:name=".BackupActivity"/>
+        <activity android:name=".CalendarActivity"/>
+        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".StatsActivity"/>
+        <activity android:name=".UpdateActivityActivity"/>
+        <activity android:name=".UpdateMoodActivity"/>
+        <activity android:name=".UpdateMoodEntryActivity"/>
+        <activity android:name=".UpdateNotificationActivity"/>
 
     </application>
 
