@@ -9,4 +9,3 @@ class AddMoodEntryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_addmoodentry)
     }
 }
-}
