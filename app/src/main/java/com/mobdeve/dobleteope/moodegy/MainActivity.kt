@@ -3,6 +3,10 @@ package com.mobdeve.dobleteope.moodegy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.room.Room
+import com.mobdeve.dobleteope.moodegy.data.AppDatabase
+import com.mobdeve.dobleteope.moodegy.data.MoodEntry
+import com.mobdeve.dobleteope.moodegy.data.MoodEntryDao
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,5 +18,18 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, SettingsActivity::class.java)
             startActivity(intent)
         }
+
+        val db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "Moodegy"
+        ).allowMainThreadQueries().build()
+
+        val moodEntryDao = db.moodEntryDao()
+
+        val moodEntries : List<MoodEntry> = moodEntryDao.getAll()
+        val moodEntry1 : MoodEntry = moodEntries[0]
+        mainText.text = moodEntries.toString()
+
+
     }
 }
