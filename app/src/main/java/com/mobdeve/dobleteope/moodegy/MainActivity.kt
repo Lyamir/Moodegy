@@ -21,14 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         val db = Room.databaseBuilder(
             applicationContext,
-            AppDatabase::class.java, "Moodegy"
+            AppDatabase::class.java, "MoodegyDB"
         ).allowMainThreadQueries().build()
 
         val moodEntryDao = db.moodEntryDao()
 
-        val moodEntries : List<MoodEntry> = moodEntryDao.getAll()
-        val moodEntry1 : MoodEntry = moodEntries[0]
-        mainText.text = moodEntries.toString()
 
 
     }
