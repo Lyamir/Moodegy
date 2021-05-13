@@ -16,4 +16,7 @@ interface MoodEntryDao {
     @Query("SELECT * FROM mood_entry")
     fun getAll(): List<MoodEntry>
 
+    @Query("SELECT * FROM mood_entry WHERE id = :id")
+    fun getMoodEntry(id: Int): MoodEntry
+
 }
