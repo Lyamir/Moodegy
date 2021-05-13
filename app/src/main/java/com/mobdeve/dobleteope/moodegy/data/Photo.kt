@@ -1,14 +1,13 @@
 package com.mobdeve.dobleteope.moodegy.data
 
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.Relation
+import android.graphics.Bitmap
+import androidx.room.*
 
 @Entity(tableName = "photo")
 data class Photo(
     @PrimaryKey val id: Int,
-    val photo: String
+
+    val photo: Bitmap
 )
 
 data class MoodEntryAndPhoto(
