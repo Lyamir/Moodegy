@@ -4,9 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.room.Room
-import com.mobdeve.dobleteope.moodegy.data.AppDatabase
-import com.mobdeve.dobleteope.moodegy.data.MoodEntry
-import com.mobdeve.dobleteope.moodegy.data.MoodEntryDao
+import com.mobdeve.dobleteope.moodegy.data.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         ).allowMainThreadQueries().build()
 
         val moodEntryDao = db.moodEntryDao()
+        val activityEntryDao = db.activityEntryDao()
+        val moodDao = db.moodDao()
+        val activityDao = db.activityDao()
 
 
 

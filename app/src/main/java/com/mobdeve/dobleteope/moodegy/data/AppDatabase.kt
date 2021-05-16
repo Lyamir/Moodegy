@@ -21,6 +21,11 @@ import androidx.room.TypeConverters
 @TypeConverters (Converters::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun moodEntryDao(): MoodEntryDao
+    abstract fun activityEntryDao(): ActivityEntryDao
+    abstract fun activityDao(): ActivityDao
+    abstract fun moodDao(): MoodDao
+    abstract fun photoDao(): PhotoDao
+    abstract fun descDao(): DescriptionDao
 
     companion object {
         @Volatile
