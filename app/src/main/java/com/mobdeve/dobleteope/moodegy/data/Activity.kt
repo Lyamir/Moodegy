@@ -7,7 +7,7 @@ import androidx.room.Relation
 
 @Entity(tableName = "activity")
 data class Activity(
-    @PrimaryKey val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val name: String
 )
 
