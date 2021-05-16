@@ -1,12 +1,16 @@
 package com.mobdeve.dobleteope.moodegy.data
 
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.Relation
+import androidx.room.*
 import java.sql.Date
 
-@Entity(tableName = "mood_entry")
+@Entity(tableName = "mood_entry",
+    foreignKeys =
+        [ForeignKey(
+            entity = Mood::class,
+            parentColumns = ["id"],
+            childColumns = ["moodID"],
+            onDelete = ForeignKey.CASCADE)
+        ])
 data class MoodEntry (
     @PrimaryKey(autoGenerate = true)
     val id: Int,

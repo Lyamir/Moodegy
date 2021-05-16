@@ -3,18 +3,17 @@ package com.mobdeve.dobleteope.moodegy.data
 import android.graphics.Bitmap
 import androidx.room.*
 
-@Entity(tableName = "photo")
+@Entity(tableName = "photo",
+    foreignKeys =
+    [ForeignKey(
+        entity = MoodEntry::class,
+        parentColumns = ["id"],
+        childColumns = ["id"],
+        onDelete = ForeignKey.CASCADE)
+    ])
 data class Photo(
-    @PrimaryKey val id: Int,
-
+    @PrimaryKey
+    val id: Int,
     val photo: Bitmap
 )
 
-data class MoodEntryAndPhoto(
-    @Embedded val moodEntry: MoodEntry,
-    @Relation(
-        parentColumn = "id",
-        entityColumn = "id"
-    )
-    val photo: String
-)
