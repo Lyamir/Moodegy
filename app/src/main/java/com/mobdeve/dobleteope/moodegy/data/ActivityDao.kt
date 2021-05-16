@@ -17,5 +17,5 @@ interface ActivityDao {
     fun getAll(): List<Activity>
 
     @Query("SELECT * FROM activity WHERE id = :id")
-    fun getActivity(id: Int): MoodEntry
+    fun getActivity(id: Int): Activity
 }
