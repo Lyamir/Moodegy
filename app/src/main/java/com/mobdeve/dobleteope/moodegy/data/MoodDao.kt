@@ -17,5 +17,5 @@ interface MoodDao {
     fun getAll(): List<Mood>
 
     @Query("SELECT * FROM mood WHERE id = :id")
-    fun getMood(id: Int): Mood
+    fun getActivity(id: Int): Mood
 }
