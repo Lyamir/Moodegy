@@ -1,6 +1,8 @@
 package com.mobdeve.dobleteope.moodegy.data
 
 import androidx.room.*
+import com.mobdeve.dobleteope.moodegy.data.relationships.MoodEntryAndDescription
+import com.mobdeve.dobleteope.moodegy.data.relationships.MoodEntryAndPhoto
 
 @Dao
 interface MoodEntryDao {
