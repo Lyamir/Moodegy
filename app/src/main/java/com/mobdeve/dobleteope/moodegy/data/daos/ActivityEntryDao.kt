@@ -5,6 +5,11 @@ import com.mobdeve.dobleteope.moodegy.data.ActivityEntry
 
 @Dao
 interface ActivityEntryDao {
+
+    @Insert
+    fun insert(vararg activityEntry: ActivityEntry)
+
     @Query("SELECT * FROM activity_entry")
     fun getAll(): List<ActivityEntry>
+    
 }
