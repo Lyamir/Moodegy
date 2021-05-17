@@ -5,6 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.mobdeve.dobleteope.moodegy.data.daos.*
 
 @Database(
     entities = [
@@ -41,9 +43,25 @@ abstract class AppDatabase: RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "MoodegyDB"
-                ).build()
+                ).allowMainThreadQueries().addCallback(rdc).build()
                 INSTANCE = instance
                 return instance
+            }
+        }
+
+        private val rdc = object: RoomDatabase.Callback(){
+            override fun onCreate(db: SupportSQLiteDatabase) {
+                super.onCreate(db)
+                db.execSQL("INSERT INTO mood ('name') VALUES ('happy')")
+                db.execSQL("INSERT INTO mood ('name') VALUES ('angry')")
+                db.execSQL("INSERT INTO mood ('name') VALUES ('sad')")
+                db.execSQL("INSERT INTO mood ('name') VALUES ('okay')")
+                db.execSQL("INSERT INTO activity ('name') VALUES ('Family')")
+                db.execSQL("INSERT INTO activity ('name') VALUES ('Relationship')")
+                db.execSQL("INSERT INTO activity ('name') VALUES ('Sports')")
+                db.execSQL("INSERT INTO activity ('name') VALUES ('School')")
+                db.execSQL("INSERT INTO activity ('name') VALUES ('Work')")
+                db.execSQL("INSERT INTO activity ('name') VALUES ('Hobbies')")
             }
         }
     }
