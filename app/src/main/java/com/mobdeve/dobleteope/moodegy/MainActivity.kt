@@ -17,15 +17,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, "MoodegyDB"
-        ).allowMainThreadQueries().build()
-
+        val db = AppDatabase.getDatabase(this)
         val moodEntryDao = db.moodEntryDao()
-        val activityEntryDao = db.activityEntryDao()
         val moodDao = db.moodDao()
         val activityDao = db.activityDao()
+        val activityEntryDao = db.activityEntryDao()
+
+        moodList.text = moodDao.getAll().toString()
+        activityList.text = activityDao.getAll().toString()
 
 
 
