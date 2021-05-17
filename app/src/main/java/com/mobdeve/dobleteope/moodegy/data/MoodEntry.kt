@@ -15,6 +15,7 @@ data class MoodEntry (
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val dateTime: String,
+    @ColumnInfo(index = true)
     val moodID: Int
 )
 
