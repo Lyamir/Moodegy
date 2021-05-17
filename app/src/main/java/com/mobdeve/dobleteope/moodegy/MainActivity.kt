@@ -12,11 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        main_constraint.setOnClickListener {
-            val intent = Intent(this@MainActivity, SettingsActivity::class.java)
-            startActivity(intent)
-        }
-
         val db = AppDatabase.getDatabase(this)
         val moodEntryDao = db.moodEntryDao()
         val moodDao = db.moodDao()
