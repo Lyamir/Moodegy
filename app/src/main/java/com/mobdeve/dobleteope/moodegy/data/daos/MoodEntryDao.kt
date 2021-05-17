@@ -1,6 +1,7 @@
-package com.mobdeve.dobleteope.moodegy.data
+package com.mobdeve.dobleteope.moodegy.data.daos
 
 import androidx.room.*
+import com.mobdeve.dobleteope.moodegy.data.MoodEntry
 
 @Dao
 interface MoodEntryDao {
@@ -16,7 +17,7 @@ interface MoodEntryDao {
     @Query("SELECT * FROM mood_entry")
     fun getAll(): List<MoodEntry>
 
-    @Query("SELECT * FROM mood_entry WHERE id = :id")
+    @Query("SELECT * FROM mood_entry WHERE id = :id ORDER BY dateTime DESC")
     fun getMoodEntry(id: Int): MoodEntry
 
 }

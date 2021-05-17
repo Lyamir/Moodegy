@@ -1,6 +1,7 @@
-package com.mobdeve.dobleteope.moodegy.data
+package com.mobdeve.dobleteope.moodegy.data.daos
 
 import androidx.room.*
+import com.mobdeve.dobleteope.moodegy.data.Description
 
 @Dao
 interface DescriptionDao {
