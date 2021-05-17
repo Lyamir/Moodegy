@@ -18,7 +18,9 @@ import androidx.room.*
             onDelete = ForeignKey.CASCADE)
         ])
 data class ActivityEntry(
+    @ColumnInfo(index = true)
     val moodEntryID: Int,
+    @ColumnInfo(index = true)
     val activityID: Int
 )
 
