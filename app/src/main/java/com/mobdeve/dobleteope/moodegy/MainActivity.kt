@@ -3,6 +3,7 @@ package com.mobdeve.dobleteope.moodegy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.mobdeve.dobleteope.moodegy.data.*
@@ -12,6 +13,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        btn_stats.setOnClickListener {
+            val intent = Intent(this, StatsActivity::class.java)
+            startActivity(intent)
+        }
 
         val db = AppDatabase.getDatabase(this)
         val moodEntryDao = db.moodEntryDao()
