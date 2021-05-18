@@ -43,6 +43,7 @@ class MoodEntryAdapter(
                     for(activity in activityList){
                         if(activityEntry.activityID == activity.id){
                             holder.activityView.text = activity.name
+                            break
                         }
                     }
                 }
