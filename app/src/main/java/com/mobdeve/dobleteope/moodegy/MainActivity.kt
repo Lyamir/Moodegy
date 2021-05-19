@@ -1,13 +1,15 @@
 package com.mobdeve.dobleteope.moodegy
 
+import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.view.Gravity
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
 import com.mobdeve.dobleteope.moodegy.data.*
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +30,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddActivityActivity::class.java)
             startActivity(intent)
         }
+
+        btn_addmoodentry.setOnClickListener{
+            val intent = Intent(this, AddMoodEntryActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {
@@ -38,9 +45,6 @@ class MainActivity : AppCompatActivity() {
         val moodDao = db.moodDao()
         val activityDao = db.activityDao()
         val activityEntryDao = db.activityEntryDao()
-
-        moodList.text = moodDao.getAll().toString()
-        activityList.text = activityDao.getAll().toString()
 
         val moodList = moodDao.getAll()
         val moodEntryList = moodEntryDao.getAll()
