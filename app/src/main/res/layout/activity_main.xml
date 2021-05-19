@@ -8,38 +8,50 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/moodList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-    <TextView
-        android:id="@+id/activityList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btn_stats"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Stats" />
+        android:layout_height="600dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_addmood"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Mood" />
+        <Button
+            android:id="@+id/btn_stats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stats" />
 
-    <Button
-        android:id="@+id/btn_addactivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Activity" />
+        <Button
+            android:id="@+id/btn_addmood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Mood" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/main_recyclerview"
+        <Button
+            android:id="@+id/btn_addactivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Activity" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_addmoodentry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Add Mood Entry" />
+    </LinearLayout>
 
 </LinearLayout>
