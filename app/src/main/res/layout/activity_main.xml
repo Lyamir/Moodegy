@@ -25,6 +25,18 @@
         android:layout_height="wrap_content"
         android:text="Stats" />
 
+    <Button
+        android:id="@+id/btn_addmood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Mood" />
+
+    <Button
+        android:id="@+id/btn_addactivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Activity" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_recyclerview"
         android:layout_width="match_parent"
