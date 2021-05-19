@@ -19,6 +19,20 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btn_addmood.setOnClickListener {
+            val intent = Intent(this, AddMoodActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_addactivity.setOnClickListener {
+            val intent = Intent(this, AddActivityActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
         val db = AppDatabase.getDatabase(this)
         val moodEntryDao = db.moodEntryDao()
         val moodDao = db.moodDao()
@@ -40,7 +54,5 @@ class MainActivity : AppCompatActivity() {
         llm.stackFromEnd = true
         main_recyclerview.layoutManager = llm
         main_recyclerview.setHasFixedSize(true)
-
-
     }
 }
