@@ -9,6 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Moodegy">
+        <provider
+            android:authorities="com.mobdeve.dobleteope.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/fileprovider"
+                />
+        </provider>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,8 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddActivityActivity"/>
-        <activity android:name=".AddMoodActivity"/>
+        <activity android:name=".AddActivityActivity" />
+        <activity android:name=".AddMoodActivity" />
         <activity android:name=".AddMoodEntryActivity"/>
         <activity android:name=".BackupActivity"/>
         <activity android:name=".CalendarActivity"/>
