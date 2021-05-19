@@ -20,4 +20,7 @@ interface MoodEntryDao {
     @Query("SELECT * FROM mood_entry WHERE id = :id ORDER BY dateTime DESC")
     fun getMoodEntry(id: Int): MoodEntry
 
+    @Query("SELECT * FROM mood_entry WHERE dateTime = :dateTime")
+    fun getMoodEntryFromDate(dateTime: String): MoodEntry
+
 }
