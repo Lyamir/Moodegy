@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mobdeve.dobleteope.moodegy">
-
+    <uses-feature android:name="android.hardware.camera" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,9 +26,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/fileprovider" />
         </provider>
-        
 
-        </activity>
+
         <activity android:name=".AddActivityActivity" />
         <activity android:name=".AddMoodActivity" />
         <activity android:name=".AddMoodEntryActivity" />
