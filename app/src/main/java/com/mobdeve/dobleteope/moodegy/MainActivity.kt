@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.mobdeve.dobleteope.moodegy.fragments.HomeFragment
 import com.mobdeve.dobleteope.moodegy.fragments.SettingsFragment
 import com.mobdeve.dobleteope.moodegy.fragments.StatsFragment
-import kotlinx.android.synthetic.main.activity_main2.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainActivity : AppCompatActivity() {
