@@ -1,21 +1,19 @@
 package com.mobdeve.dobleteope.moodegy
 
-import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
-import com.mobdeve.dobleteope.moodegy.data.ActivityEntry
-import com.mobdeve.dobleteope.moodegy.data.AppDatabase
-import com.mobdeve.dobleteope.moodegy.data.MoodEntry
+import com.mobdeve.dobleteope.moodegy.data.*
 import kotlinx.android.synthetic.main.activity_addmoodentry.*
 import java.io.File
 import java.text.SimpleDateFormat
@@ -23,6 +21,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 private const val REQUEST_CODE = 11
 private const val FILE_NAME = "photo.jpg"
@@ -43,10 +42,11 @@ class AddMoodEntryActivity : AppCompatActivity() {
         val moodDao = db.moodDao()
         val activityDao = db.activityDao()
         val activityEntryDao = db.activityEntryDao()
+        val photoDao = db.photoDao()
+        val descriptionDao = db.descDao()
 
         val moodList = moodDao.getAll()
         val activityList = activityDao.getAll()
-        val activityEntryList = activityEntryDao.getAll()
 
         var newMoodList = ArrayList<String>()
         for (mood in moodList){
@@ -99,21 +99,31 @@ class AddMoodEntryActivity : AppCompatActivity() {
                 answer = formatter.format(date)
             }
 
+            val moodEntry = moodEntryDao.getMoodEntryFromDate(answer)
+
             for(mood in moodList){
                 if(mood.name == selectmood_autocompletetextview.text.toString()){
-                    for(activity in activityList){
-                        if(activity.name == selectactivity_autocompletetextview.text.toString()){
-                            moodEntryDao.insert(MoodEntry(0, answer, mood.id))
-                            val moodEntry = moodEntryDao.getMoodEntryFromDate(answer)
-                            activityEntryDao.insert(ActivityEntry(moodEntry.id, activity.id))
-                            finish()
-                        }
-                    }
+                    moodEntryDao.insert(MoodEntry(0, answer, mood.id))
+                }
+                break
+            }
 
+            for(activity in activityList){
+                if(activity.name == selectactivity_autocompletetextview.text.toString()){
+                    activityEntryDao.insert(ActivityEntry(moodEntry.id, activity.id))
                 }
             }
 
+            uploadpicture_view.invalidate()
+            val drawable: BitmapDrawable = uploadpicture_view.drawable as BitmapDrawable
+            val bitmap = drawable.bitmap
 
+            if(withPhoto)
+                photoDao.insert(Photo(moodEntry.id, bitmap))
+            if(adddescription_edittext.text.toString().isNotEmpty())
+                descriptionDao.insert(Description(moodEntry.id, adddescription_edittext.text.toString()))
+
+            finish()
         }
     }
 
