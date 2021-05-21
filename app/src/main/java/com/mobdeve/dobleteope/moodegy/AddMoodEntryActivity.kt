@@ -64,13 +64,14 @@ class AddMoodEntryActivity : AppCompatActivity() {
         val activityListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newActivityList)
         selectactivity_autocompletetextview.setAdapter(activityListAdapter)
 
+
         uploadpicture_btn.setOnClickListener{
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             photoFile = getPhotoFile(FILE_NAME)
 
             val fileProvider = FileProvider.getUriForFile(this, "com.mobdeve.dobleteope.fileprovider", photoFile)
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider)
-            if(intent.resolveActivity(this.packageManager) == null)
+            if(intent.resolveActivity(this.packageManager) != null)
                 startActivityForResult(intent, REQUEST_CODE)
             else
                 Toast.makeText(this, "Unable to Open Camera", Toast.LENGTH_SHORT).show()
@@ -100,14 +101,14 @@ class AddMoodEntryActivity : AppCompatActivity() {
                 answer = formatter.format(date)
             }
 
-            val moodEntry = moodEntryDao.getMoodEntryFromDate(answer)
-
             for(mood in moodList){
                 if(mood.name == selectmood_autocompletetextview.text.toString()){
                     moodEntryDao.insert(MoodEntry(0, answer, mood.id))
+                    break
                 }
-                break
             }
+
+            val moodEntry = moodEntryDao.getMoodEntryFromDate(answer)
 
             for(activity in activityList){
                 if(activity.name == selectactivity_autocompletetextview.text.toString()){
@@ -119,10 +120,13 @@ class AddMoodEntryActivity : AppCompatActivity() {
             val drawable: BitmapDrawable = uploadpicture_view.drawable as BitmapDrawable
             val bitmap = drawable.bitmap
 
-            if(withPhoto)
+            if(withPhoto){
                 photoDao.insert(Photo(moodEntry.id, bitmap))
-            if(adddescription_edittext.text.toString().isNotEmpty())
+            }
+
+            if(adddescription_edittext.text.toString().isNotEmpty()){
                 descriptionDao.insert(Description(moodEntry.id, adddescription_edittext.text.toString()))
+            }
 
             finish()
         }
@@ -140,11 +144,6 @@ class AddMoodEntryActivity : AppCompatActivity() {
             uploadpicture_view.setImageBitmap(image)
         }
         super.onActivityResult(requestCode, resultCode, data)
-
-    }
-
-    override fun onResume() {
-        super.onResume()
 
     }
 }
