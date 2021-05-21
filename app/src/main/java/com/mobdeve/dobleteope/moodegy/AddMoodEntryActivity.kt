@@ -7,6 +7,8 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -58,7 +60,6 @@ class AddMoodEntryActivity : AppCompatActivity() {
 
         val moodListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newMoodList)
         selectmood_autocompletetextview.setAdapter(moodListAdapter)
-
         val activityListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newActivityList)
         selectactivity_autocompletetextview.setAdapter(activityListAdapter)
 
@@ -73,6 +74,18 @@ class AddMoodEntryActivity : AppCompatActivity() {
             else
                 Toast.makeText(this, "Unable to Open Camera", Toast.LENGTH_SHORT).show()
         }
+
+        selectmood_autocompletetextview.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                if(selectactivity_autocompletetextview.text.toString().isNotEmpty())
+                    addmoodentry_btn.isEnabled = true
+            }
+
+        selectactivity_autocompletetextview.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                if(selectmood_autocompletetextview.text.toString().isNotEmpty())
+                    addmoodentry_btn.isEnabled = true
+            }
 
         addmoodentry_btn.setOnClickListener{
             var answer: String? = null
@@ -93,12 +106,13 @@ class AddMoodEntryActivity : AppCompatActivity() {
                             moodEntryDao.insert(MoodEntry(0, answer, mood.id))
                             val moodEntry = moodEntryDao.getMoodEntryFromDate(answer)
                             activityEntryDao.insert(ActivityEntry(moodEntry.id, activity.id))
+                            finish()
                         }
                     }
 
                 }
             }
-            finish()
+
 
         }
     }
