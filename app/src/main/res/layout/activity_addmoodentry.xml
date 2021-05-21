@@ -4,95 +4,135 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="#B6E2D3">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:id="@+id/selectmood_textinput"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        app:startIconDrawable="@drawable/ic_smiley"
-        app:helperText="Required*"
-        app:helperTextTextColor="@color/red"
-        android:hint="Mood">
-        <AutoCompleteTextView
-            android:id="@+id/selectmood_autocompletetextview"
-            android:layout_width="match_parent"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="none"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:id="@+id/selectactivity_textinput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="20dp"
-        app:startIconDrawable="@drawable/ic_activity"
-        app:helperText="Required*"
-        app:helperTextTextColor="@color/red"
-        android:hint="Activity">
-
-        <AutoCompleteTextView
-            android:id="@+id/selectactivity_autocompletetextview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="none"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/uploadpicture_btn"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Upload Picture" />
+            android:layout_marginTop="10dp"
+            android:text="New Entry"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textColor="#D703082B"
+            android:layout_centerHorizontal="true"/>
 
         <ImageView
-            android:id="@+id/uploadpicture_view"
-            android:layout_width="100dp"
+            android:layout_width="200dp"
             android:layout_height="100dp"
-            app:srcCompat="@android:drawable/ic_menu_gallery" />
-    </LinearLayout>
+            android:layout_marginTop="60dp"
+            android:src="@drawable/newentry_bg"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/adddescription_textinput"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Description"
-        app:endIconMode="clear_text"
-        app:startIconDrawable="@drawable/ic_brush">
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:layout_width="440dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/cvbg_new"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/adddescription_edittext"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:id="@+id/selectmood_textinput"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="65dp"
+            app:startIconDrawable="@drawable/ic_smiley"
+            app:helperText="Required*"
+            app:helperTextTextColor="@color/red"
+            android:hint="Mood">
+            <AutoCompleteTextView
+                android:id="@+id/selectmood_autocompletetextview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="none"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/addmoodentry_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="32dp"
-        android:text="Add Mood Entry" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:id="@+id/selectactivity_textinput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="20dp"
+            app:startIconDrawable="@drawable/ic_activity"
+            app:helperText="Required*"
+            app:helperTextTextColor="@color/red"
+            android:hint="Activity">
 
+            <AutoCompleteTextView
+                android:id="@+id/selectactivity_autocompletetextview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="none"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/uploadpicture_view"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+            <Button
+                android:id="@+id/uploadpicture_btn"
+                android:layout_width="155dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:text="Upload Photo"
+                app:cornerRadius="5dp" />
+
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/adddescription_textinput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="5dp"
+            android:hint="Description"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_brush">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/adddescription_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/addmoodentry_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="40dp"
+            android:text="Add Mood Entry"
+            android:enabled="false"
+            app:cornerRadius="5dp"/>
+
+    </LinearLayout>
 
 </LinearLayout>
