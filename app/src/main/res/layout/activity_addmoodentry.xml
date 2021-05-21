@@ -115,6 +115,7 @@
             app:endIconMode="clear_text"
             app:startIconDrawable="@drawable/ic_brush">
 
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/adddescription_edittext"
                 android:layout_width="match_parent"
@@ -122,16 +123,16 @@
                 android:scrollbars="vertical"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/addmoodentry_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="40dp"
-            android:text="Add Mood Entry"
-            android:enabled="false"
-            app:cornerRadius="5dp"/>
+    <Button
+        android:id="@+id/addmoodentry_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="32dp"
+        android:text="Add Mood Entry"
+        android:enabled="false"/>
+
 
     </LinearLayout>
 
