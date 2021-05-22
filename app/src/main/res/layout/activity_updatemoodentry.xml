@@ -7,12 +7,26 @@
     android:gravity="center"
     android:background="@drawable/editentry_bg">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/updatemoodentry_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="270dp"
+            android:text="Save"
+            app:cornerRadius="5dp" />
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/cvbg"
-        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
 
@@ -103,17 +117,20 @@
                 android:scrollbars="vertical"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <Button
-            android:id="@+id/updatemoodentry_btn"
+            android:id="@+id/deletemoodentry_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="32dp"
-            android:text="Save Entry"
-            android:enabled="false"/>
+            android:background="@drawable/custom_button"
+            android:enabled="false"
+            android:text="Delete Entry"
+            app:backgroundTint="null" />
 
 
     </LinearLayout>
-    
+
 </LinearLayout>
