@@ -125,6 +125,7 @@
                 android:id="@+id/adddescription_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:maxLines="5"
                 android:scrollbars="vertical"/>
         </com.google.android.material.textfield.TextInputLayout>
 
