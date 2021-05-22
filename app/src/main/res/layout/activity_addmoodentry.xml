@@ -41,6 +41,33 @@
         android:layout_marginTop="0dp"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="60dp">
+
+            <TextView
+                android:id="@+id/editactivities_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:textColor="#a0616a"
+                android:textStyle="bold"
+                android:text="Edit Activities"/>
+
+            <TextView
+                android:id="@+id/editmoods_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="135dp"
+                android:layout_marginRight="40dp"
+                android:textStyle="bold"
+                android:textColor="#a0616a"
+                android:text="Edit Moods"/>
+
+        </LinearLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -49,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="10dp"
             app:startIconDrawable="@drawable/ic_smiley"
             app:helperText="Required*"
             app:helperTextTextColor="@color/red"
