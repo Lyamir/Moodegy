@@ -37,7 +37,6 @@
             android:layout_marginTop="0dp"
             android:orientation="vertical">
 
-            <!--TODO: add date, time, mood, activity, picture, description -->
 
             <TextView
                 android:id="@+id/viewentry_mood"
