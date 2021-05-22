@@ -128,7 +128,7 @@
             android:background="@drawable/custom_button"
             android:enabled="false"
             android:text="Delete Entry"
-            app:backgroundTint="null" />
+            app:backgroundTint="@null" />
 
 
     </LinearLayout>

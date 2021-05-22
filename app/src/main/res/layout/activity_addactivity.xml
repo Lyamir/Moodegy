@@ -76,8 +76,8 @@
             android:layout_height="wrap_content"
             app:startIconDrawable="@drawable/ic_activity"
             app:endIconMode="clear_text"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
             android:hint="Activity Name">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -90,9 +90,9 @@
             android:id="@+id/addactivity_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="50dp"
             android:enabled="false"
             android:text="Add Activity"
             app:cornerRadius="10dp"/>
