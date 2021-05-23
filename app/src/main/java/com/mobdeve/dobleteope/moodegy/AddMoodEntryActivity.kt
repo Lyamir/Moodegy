@@ -1,8 +1,8 @@
 package com.mobdeve.dobleteope.moodegy
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Build
@@ -49,12 +49,12 @@ class AddMoodEntryActivity : AppCompatActivity() {
         val moodList = moodDao.getAll()
         val activityList = activityDao.getAll()
 
-        var newMoodList = ArrayList<String>()
+        val newMoodList = ArrayList<String>()
         for (mood in moodList){
             newMoodList.add(mood.name)
         }
 
-        var newActivityList = ArrayList<String>()
+        val newActivityList = ArrayList<String>()
         for (activity in activityList){
             newActivityList.add(activity.name)
         }
@@ -71,10 +71,11 @@ class AddMoodEntryActivity : AppCompatActivity() {
 
             val fileProvider = FileProvider.getUriForFile(this, "com.mobdeve.dobleteope.fileprovider", photoFile)
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider)
-            if(intent.resolveActivity(this.packageManager) != null)
+            try{
                 startActivityForResult(intent, REQUEST_CODE)
-            else
+            }catch (ex: ActivityNotFoundException){
                 Toast.makeText(this, "Unable to Open Camera", Toast.LENGTH_SHORT).show()
+            }
         }
 
         selectmood_autocompletetextview.onItemClickListener =
@@ -90,15 +91,14 @@ class AddMoodEntryActivity : AppCompatActivity() {
             }
 
         addmoodentry_btn.setOnClickListener{
-            var answer: String? = null
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val answer: String = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val current = LocalDateTime.now()
                 val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy. HH:mm:ss")
-                answer =  current.format(formatter)
+                current.format(formatter)
             } else {
-                var date = Date()
-                val formatter = SimpleDateFormat("MMM dd yyyy HH:mma")
-                answer = formatter.format(date)
+                val date = Date()
+                val formatter = SimpleDateFormat("MMM dd yyyy HH:mma", Locale.TAIWAN)
+                formatter.format(date)
             }
 
             for(mood in moodList){
