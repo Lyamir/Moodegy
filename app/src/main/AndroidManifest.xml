@@ -40,11 +40,12 @@
         <activity android:name=".BackupActivity" />
         <activity android:name=".CalendarActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".StatsActivity" />
         <activity android:name=".UpdateActivityActivity" />
         <activity android:name=".UpdateMoodActivity" />
         <activity android:name=".UpdateMoodEntryActivity" />
         <activity android:name=".UpdateNotificationActivity" />
+        <activity android:name=".ViewActivities"/>
+        <activity android:name=".ViewMoods"/>
     </application>
 
 </manifest>
