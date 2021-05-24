@@ -70,7 +70,7 @@ class AddMoodEntryActivity : AppCompatActivity() {
         }
 
         editmoods_textview.setOnClickListener{
-            val intent = Intent(this, ViewActivities::class.java)
+            val intent = Intent(this, ViewMoods::class.java)
             startActivity(intent)
         }
 
