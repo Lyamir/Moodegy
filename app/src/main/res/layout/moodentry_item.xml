@@ -5,10 +5,11 @@
     android:layout_margin="10sp">
 
     <LinearLayout
+        android:id="@+id/moodentry_ll"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:orientation="vertical"
-        android:background="#E7F2F8" >
+        android:background="#E7F2F8"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/moodentry_date"
@@ -18,7 +19,7 @@
             android:layout_marginTop="15dp"
             android:text="TextView"
             android:textColor="#D703082B"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/moodentry_mood"
@@ -27,8 +28,8 @@
             android:layout_marginLeft="20dp"
             android:text="TextView"
             android:textColor="#D703082B"
-            android:textStyle="bold"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/moodentry_activity"
@@ -37,7 +38,7 @@
             android:layout_marginLeft="20dp"
             android:text="TextView"
             android:textColor="#D703082B"
-            android:textSize="15dp"/>
+            android:textSize="15dp" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
