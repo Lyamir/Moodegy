@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.mobdeve.dobleteope.moodegy.*
 import com.mobdeve.dobleteope.moodegy.data.AppDatabase
+import com.mobdeve.dobleteope.moodegy.data.MoodEntry
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.btn_addactivity
 import kotlinx.android.synthetic.main.fragment_home.btn_addmoodentry
@@ -26,10 +28,12 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), MoodEntryAdapter.OnMoodEntryClickListener {
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var moodEntryList: List<MoodEntry>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,10 +85,10 @@ class HomeFragment : Fragment() {
         val activityEntryDao = db.activityEntryDao()
 
         val moodList = moodDao.getAll()
-        val moodEntryList = moodEntryDao.getAll()
+        moodEntryList = moodEntryDao.getAll()
         val activityList = activityDao.getAll()
         val activityEntryList = activityEntryDao.getAll()
-        val adapter = MoodEntryAdapter(moodEntryList, moodList, activityList, activityEntryList)
+        val adapter = MoodEntryAdapter(moodEntryList as List<MoodEntry>, moodList, activityList, activityEntryList, this)
         main_recyclerview.adapter = adapter
         val llm = LinearLayoutManager(activity)
         llm.reverseLayout = true
@@ -92,6 +96,8 @@ class HomeFragment : Fragment() {
         main_recyclerview.layoutManager = llm
         main_recyclerview.setHasFixedSize(true)
     }
+
+
 
     companion object {
         /**
@@ -111,5 +117,11 @@ class HomeFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onMoodEntryClick(position: Int) {
+        val intent = Intent(activity, ViewMoodEntry::class.java)
+        intent.putExtra("moodEntry", Gson().toJson(moodEntryList?.get(position)))
+        startActivity(intent)
     }
 }

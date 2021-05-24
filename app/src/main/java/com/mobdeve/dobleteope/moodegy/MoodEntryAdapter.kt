@@ -3,6 +3,7 @@ package com.mobdeve.dobleteope.moodegy
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mobdeve.dobleteope.moodegy.data.Activity
@@ -15,13 +16,30 @@ class MoodEntryAdapter(
     private val moodEntryList: List<MoodEntry>,
     private val moodList: List<Mood>,
     private val activityList: List<Activity>,
-    private val activityEntryList: List<ActivityEntry>
+    private val activityEntryList: List<ActivityEntry>,
+    private val listener: OnMoodEntryClickListener
     ): RecyclerView.Adapter<MoodEntryAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener{
         var dateView: TextView = itemView.moodentry_date
         var moodView: TextView = itemView.moodentry_mood
         var activityView: TextView = itemView.moodentry_activity
+        var linearlayout: LinearLayout = itemView.moodentry_ll
+
+        init{
+            itemView.moodentry_ll.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position = absoluteAdapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onMoodEntryClick(position)
+            }
+        }
+    }
+
+    interface OnMoodEntryClickListener{
+        fun onMoodEntryClick(position: Int)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoodEntryAdapter.ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.moodentry_item, parent, false)
