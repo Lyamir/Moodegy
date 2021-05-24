@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 class UpdateActivityActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_updateactivity)
+        setContentView(R.layout.activity_viewactivities)
     }
+
 }

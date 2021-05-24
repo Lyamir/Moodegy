@@ -6,6 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 class UpdateMoodActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_updatemood)
+        setContentView(R.layout.activity_viewmoods)
     }
 }
