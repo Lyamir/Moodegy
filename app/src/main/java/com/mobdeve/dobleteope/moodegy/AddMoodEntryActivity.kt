@@ -64,6 +64,15 @@ class AddMoodEntryActivity : AppCompatActivity() {
         val activityListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newActivityList)
         selectactivity_autocompletetextview.setAdapter(activityListAdapter)
 
+        editactivities_textview.setOnClickListener{
+            val intent = Intent(this, ViewActivities::class.java)
+            startActivity(intent)
+        }
+
+        editmoods_textview.setOnClickListener{
+            val intent = Intent(this, ViewActivities::class.java)
+            startActivity(intent)
+        }
 
         uploadpicture_btn.setOnClickListener{
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
