@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobdeve.dobleteope.moodegy.data.AppDatabase
-import kotlinx.android.synthetic.main.activity_viewactivities.*
 import kotlinx.android.synthetic.main.activity_viewmoods.*
 
 class ViewMoods: AppCompatActivity() {
