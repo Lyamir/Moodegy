@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mobdeve.dobleteope.moodegy.data.Activity
 import com.mobdeve.dobleteope.moodegy.data.AppDatabase
 import kotlinx.android.synthetic.main.activity_viewactivities.*
 
@@ -24,8 +25,9 @@ class ViewActivities: AppCompatActivity() {
         val activityDao = db.activityDao()
         val activityList = activityDao.getAll()
 
-        val adapter = ViewActivitiesAdapter(activityList)
+        val adapter = ViewActivitiesAdapter(this, activityList as MutableList<Activity>, activityDao)
         activitieslist_recyclerview.adapter = adapter
+        adapter.notifyDataSetChanged()
         activitieslist_recyclerview.layoutManager = LinearLayoutManager(this)
         activitieslist_recyclerview.setHasFixedSize(true)
     }

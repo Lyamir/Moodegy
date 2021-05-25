@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobdeve.dobleteope.moodegy.data.AppDatabase
+import com.mobdeve.dobleteope.moodegy.data.Mood
 import kotlinx.android.synthetic.main.activity_viewmoods.*
 
 class ViewMoods: AppCompatActivity() {
@@ -25,8 +26,9 @@ class ViewMoods: AppCompatActivity() {
         val moodDao= db.moodDao()
         val moodList = moodDao.getAll()
 
-        val adapter = ViewMoodsAdapter(moodList)
+        val adapter = ViewMoodsAdapter(this, moodList as MutableList<Mood>, moodDao)
         moodslist_recyclerview.adapter = adapter
+        adapter.notifyDataSetChanged()
         moodslist_recyclerview.layoutManager = LinearLayoutManager(this)
         moodslist_recyclerview.setHasFixedSize(true)
     }

@@ -1,29 +1,90 @@
 package com.mobdeve.dobleteope.moodegy
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mobdeve.dobleteope.moodegy.data.Activity
+import com.mobdeve.dobleteope.moodegy.data.Mood
+import com.mobdeve.dobleteope.moodegy.data.daos.ActivityDao
 import kotlinx.android.synthetic.main.activities_item.view.*
 
 class ViewActivitiesAdapter(
-    private val activityList: List<Activity>
+    val context: Context,
+    val activityList: MutableList<Activity>,
+    private val activityDao: ActivityDao
     ): RecyclerView.Adapter<ViewActivitiesAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var activityView: TextView = itemView.activityname_textview
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        var activityView: TextView
+        var activityIDView: TextView
+        var menu: ImageView
+        init{
+            activityView = itemView.activityname_textview
+            activityIDView = itemView.activityid_textview
+            menu = itemView.more_image
+            menu.setOnClickListener{
+                popupMenus(it)
+            }
+        }
+
+        private fun popupMenus(v: View){
+
+            val popupMenus = PopupMenu(context, v)
+            popupMenus.inflate(R.menu.show_menu)
+            popupMenus.setOnMenuItemClickListener {
+                var activityItem: Activity? = null
+                for(activity in activityList){
+                    if(activity.id == Integer.parseInt(activityIDView.text.toString())){
+                        activityItem = activity
+                        break
+                    }
+                }
+                when(it.itemId){
+                    R.id.edit_item ->{
+                        if(activityItem != null){
+                            val intent = Intent(context, UpdateActivityActivity::class.java)
+                            intent.putExtra("id", activityItem.id)
+                            intent.putExtra("name", activityItem.name)
+                            context.startActivity(intent)
+                        }
+                        true
+                    }
+                    R.id.delete_item->{
+                        if(activityItem != null) {
+                            activityDao.delete(activityItem)
+                            activityList.remove(activityItem)
+                            notifyDataSetChanged()
+                        }
+                        true
+                    }
+                    else -> true
+                }
+            }
+            popupMenus.show()
+            val popup = PopupMenu::class.java.getDeclaredField("mPopup")
+            popup.isAccessible = true
+            val menu = popup.get(popupMenus)
+            menu.javaClass.getDeclaredMethod("setForceShowIcon",Boolean::class.java)
+                .invoke(menu,true)
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewActivitiesAdapter.ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activities_item, parent, false)
-        return ViewActivitiesAdapter.ViewHolder(itemView)
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewActivitiesAdapter.ViewHolder, position: Int) {
         val currentItem = activityList[position]
         holder.activityView.text = currentItem.name
+        holder.activityIDView.text = currentItem.id.toString()
     }
 
     override fun getItemCount() = activityList.size
