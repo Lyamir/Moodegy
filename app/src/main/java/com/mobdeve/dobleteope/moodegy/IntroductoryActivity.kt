@@ -1,5 +1,6 @@
 package com.mobdeve.dobleteope.moodegy
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.airbnb.lottie.LottieAnimationView
@@ -15,7 +16,12 @@ class IntroductoryActivity : AppCompatActivity() {
 
         lottie = findViewById(R.id.lottie);
 
-        lottie.animate().translationY(1400F).setDuration(1000).setStartDelay(4000);
+        lottie.animate().setDuration(2000).alpha(1f).withEndAction{
+            val i = Intent(this, MainActivity::class.java)
+            startActivity(i);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            finish()
+        }
 
 //        new Handler().postDelayed)(new Runnable () {
 //            @Override
@@ -26,6 +32,8 @@ class IntroductoryActivity : AppCompatActivity() {
 //                finish();
 //            }
 //        }, SPLASH_SCREEN);
+
+
 
     }
 }
