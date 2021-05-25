@@ -1,5 +1,6 @@
 package com.mobdeve.dobleteope.moodegy
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +12,11 @@ class ViewMoods: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_viewmoods)
+
+        addmood_btn.setOnClickListener{
+            val intent = Intent(this, AddMoodActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {

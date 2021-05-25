@@ -1,5 +1,6 @@
 package com.mobdeve.dobleteope.moodegy
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +11,11 @@ class ViewActivities: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_viewactivities)
+
+        addactivity_btn.setOnClickListener{
+            val intent = Intent(this, AddActivityActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {
