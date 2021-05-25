@@ -52,10 +52,10 @@ abstract class AppDatabase: RoomDatabase() {
         private val rdc = object: RoomDatabase.Callback(){
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
-                db.execSQL("INSERT INTO mood ('name') VALUES ('happy')")
-                db.execSQL("INSERT INTO mood ('name') VALUES ('angry')")
-                db.execSQL("INSERT INTO mood ('name') VALUES ('sad')")
-                db.execSQL("INSERT INTO mood ('name') VALUES ('okay')")
+                db.execSQL("INSERT INTO mood ('name') VALUES ('Happy')")
+                db.execSQL("INSERT INTO mood ('name') VALUES ('Angry')")
+                db.execSQL("INSERT INTO mood ('name') VALUES ('Sad')")
+                db.execSQL("INSERT INTO mood ('name') VALUES ('Okay')")
                 db.execSQL("INSERT INTO activity ('name') VALUES ('Family')")
                 db.execSQL("INSERT INTO activity ('name') VALUES ('Relationship')")
                 db.execSQL("INSERT INTO activity ('name') VALUES ('Sports')")
