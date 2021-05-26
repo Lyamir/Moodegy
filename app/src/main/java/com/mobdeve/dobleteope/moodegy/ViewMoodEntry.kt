@@ -10,7 +10,7 @@ import com.mobdeve.dobleteope.moodegy.data.MoodEntry
 import kotlinx.android.synthetic.main.activity_viewmoodentry.*
 
 class ViewMoodEntry : AppCompatActivity() {
-    var moodEntry: MoodEntry? = null
+    lateinit var moodEntry: MoodEntry
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_viewmoodentry)
@@ -36,39 +36,34 @@ class ViewMoodEntry : AppCompatActivity() {
         val activityEntryList = activityEntryDao.getAll()
 
         moodEntry = Gson().fromJson(intent.getStringExtra("moodEntry"), MoodEntry::class.java)
-        if(moodEntry != null){
-            val newMoodEntry = moodEntry as MoodEntry
-            viewentry_datetime.text = newMoodEntry.dateTime
-            val description = descriptionDao.getActivity(newMoodEntry.id)
-            if (description == null)
-                viewentry_description.visibility = View.GONE
-            else
-                viewentry_description.text = description.text
+        viewentry_datetime.text = moodEntry.dateTime
+        val description = descriptionDao.getActivity(moodEntry.id)
+        if (description == null)
+            viewentry_description.visibility = View.GONE
+        else
+            viewentry_description.text = description.text
 
-            val photo = photoDao.getActivity(newMoodEntry.id)
-            if(photo == null)
-                viewentry_image.visibility = View.GONE
-            else
-                viewentry_image.setImageBitmap(photo.photo)
+        val photo = photoDao.getActivity(moodEntry.id)
+        if(photo == null)
+            viewentry_image.visibility = View.GONE
+        else
+            viewentry_image.setImageBitmap(photo.photo)
 
-            for(mood in moodList){
-                if(newMoodEntry.moodID == mood.id){
-                    viewentry_mood.text = mood.name
-                    break
-                }
-            }
-
-            for(activityEntry in activityEntryList){
-                if(activityEntry.moodEntryID == newMoodEntry.id){
-                    for(activity in activityList){
-                        if(activityEntry.activityID == activity.id)
-                            viewentry_activity.text = activity.name
-                    }
-                }
+        for(mood in moodList){
+            if(moodEntry.moodID == mood.id){
+                viewentry_mood.text = mood.name
+                break
             }
         }
 
-
+        for(activityEntry in activityEntryList){
+            if(activityEntry.moodEntryID == moodEntry.id){
+                for(activity in activityList){
+                    if(activityEntry.activityID == activity.id)
+                        viewentry_activity.text = activity.name
+                }
+            }
+        }
 
 
     }
