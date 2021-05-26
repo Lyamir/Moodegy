@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.mobdeve.dobleteope.moodegy.data.Mood
 import com.mobdeve.dobleteope.moodegy.data.daos.MoodDao
 import kotlinx.android.synthetic.main.moods_item.view.*
@@ -47,8 +48,7 @@ class ViewMoodsAdapter(
                     R.id.edit_item ->{
                         if(moodItem != null){
                             val intent = Intent(context, UpdateMoodActivity::class.java)
-                            intent.putExtra("id", moodItem.id)
-                            intent.putExtra("name", moodItem.name)
+                            intent.putExtra("mood", Gson().toJson(moodItem))
                             context.startActivity(intent)
                         }
                         true

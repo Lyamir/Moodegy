@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.mobdeve.dobleteope.moodegy.data.Activity
 import com.mobdeve.dobleteope.moodegy.data.Mood
 import com.mobdeve.dobleteope.moodegy.data.daos.ActivityDao
@@ -49,8 +50,7 @@ class ViewActivitiesAdapter(
                     R.id.edit_item ->{
                         if(activityItem != null){
                             val intent = Intent(context, UpdateActivityActivity::class.java)
-                            intent.putExtra("id", activityItem.id)
-                            intent.putExtra("name", activityItem.name)
+                            intent.putExtra("activity", Gson().toJson(activityItem))
                             context.startActivity(intent)
                         }
                         true
