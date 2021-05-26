@@ -130,7 +130,7 @@
                 android:layout_width="155dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
-                android:text="Upload Photo"
+                android:text="Add Photo"
                 app:cornerRadius="5dp" />
 
 
