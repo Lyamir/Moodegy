@@ -69,7 +69,7 @@
                 android:src="@drawable/plus"
                 app:tint="@color/white"
                 android:layout_margin="15dp"
-                app:backgroundTint="#fcdd75"/>
+                app:backgroundTint="#fccf3a"/>
 
         </RelativeLayout>
         </LinearLayout>
