@@ -39,7 +39,8 @@
 
         <activity android:name=".AddActivityActivity" />
         <activity android:name=".AddMoodActivity" />
-        <activity android:name=".AddMoodEntryActivity" />
+        <activity android:name=".AddMoodEntryActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".BackupActivity" />
         <activity android:name=".CalendarActivity" />
         <activity android:name=".SettingsActivity" />
@@ -49,6 +50,7 @@
         <activity android:name=".UpdateNotificationActivity" />
         <activity android:name=".ViewActivities" />
         <activity android:name=".ViewMoods" />
+        <receiver android:name=".NotificationReceiver"/>
     </application>
 
 </manifest>
