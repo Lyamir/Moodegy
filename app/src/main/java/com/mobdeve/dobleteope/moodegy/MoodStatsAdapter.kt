@@ -10,7 +10,7 @@ import com.mobdeve.dobleteope.moodegy.data.MoodEntry
 import kotlinx.android.synthetic.main.stats_card.view.*
 
 class MoodStatsAdapter(
-    private val moodList: List<Mood>,
+    private val moodList: List<String>,
     private val moodEntryList: List<MoodEntry>
     ): RecyclerView.Adapter<MoodStatsAdapter.ViewHolder>() {
 
@@ -25,10 +25,10 @@ class MoodStatsAdapter(
 
     override fun onBindViewHolder(holder: MoodStatsAdapter.ViewHolder, position: Int) {
         val currentItem = moodList[position]
-        holder.moodView.text = currentItem.name
+        holder.moodView.text = currentItem
         var counter = 0
         for(entry in moodEntryList){
-            if(entry.moodName == currentItem.name){
+            if(entry.moodName == currentItem){
                 counter++
             }
         }

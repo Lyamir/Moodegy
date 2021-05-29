@@ -34,13 +34,33 @@ class StatsFragment : Fragment() {
         val activityList = activityDao.getAll()
         val activityEntryList = activityEntryDao.getAll()
 
-        val moodAdapter = MoodStatsAdapter(moodList, moodEntryList)
+        val updatedMoodList = mutableListOf<String>()
+        val updatedActivityList = mutableListOf<String>()
+        for(mood in moodList){
+            updatedMoodList.add(mood.name)
+        }
+
+        for(moodEntry in moodEntryList){
+            if(!updatedMoodList.contains(moodEntry.moodName))
+                updatedMoodList.add(moodEntry.moodName)
+        }
+
+        for(activity in activityList){
+            updatedActivityList.add(activity.name)
+        }
+
+        for(activityEntry in activityEntryList){
+            if(!updatedActivityList.contains(activityEntry.activityName))
+                updatedActivityList.add(activityEntry.activityName)
+        }
+
+        val moodAdapter = MoodStatsAdapter(updatedMoodList, moodEntryList)
         moodstats1_recyclerview.adapter = moodAdapter
         val mood_glm = GridLayoutManager(requireActivity().applicationContext, 4)
         moodstats1_recyclerview.layoutManager = mood_glm
         moodstats1_recyclerview.setHasFixedSize(true)
 
-        val activityAdapter = ActivityStatsAdapter(activityList, activityEntryList)
+        val activityAdapter = ActivityStatsAdapter(updatedActivityList, activityEntryList)
         activitystats1_recyclerview.adapter = activityAdapter
         val activity_glm = GridLayoutManager(requireActivity().applicationContext, 4)
         activitystats1_recyclerview.layoutManager = activity_glm
