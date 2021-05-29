@@ -10,90 +10,97 @@
     tools:context=".ViewMoodEntry">
 
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <Button
-            android:id="@+id/editentry_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_marginLeft="270dp"
-            android:text="Edit"
-            app:cornerRadius="5dp" />
-
-    </RelativeLayout>
-
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/cvbg_new"
+        android:orientation="vertical">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/viewentry_card"
-            android:layout_marginTop="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/viewentry_mood"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/editentry_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="65dp"
-                android:layout_gravity="center"
-                android:text="Mood"
-                android:textAllCaps="true"
-                android:textSize="40dp"
-                android:textColor="#D703082B"
-                android:fontFamily="sans-serif-black"/>
+                android:src="@drawable/edit"
+                app:tint="@color/white"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="50dp"
+                app:backgroundTint="#D703082B"/>
 
 
-            <TextView
-                android:id="@+id/viewentry_activity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="5dp"
-                android:text="Activity"
-                android:textSize="30dp"
-                android:textColor="#a0616a"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-black"/>
-
-            <TextView
-                android:id="@+id/viewentry_datetime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:text="Date and Time"
-                android:textSize="20dp"
-                android:textColor="#6e626d"
-                android:fontFamily="sans-serif-black"/>
-
-            <TextView
-                android:id="@+id/viewentry_description"
-                android:layout_width="330dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="40dp"
-                android:text="Description"
-                android:textSize="20dp"
-                android:textColor="#8f8f8f"
-                android:fontFamily="sans-serif-black"/>
-
-            <ImageView
-                android:id="@+id/viewentry_image"
-                android:layout_width="330dp"
-                android:layout_height="330dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="40dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="60dp"
+                    android:layout_marginRight="15dp">
 
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/viewentry_mood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Mood"
+                        android:textAllCaps="true"
+                        android:textSize="40dp"
+                        android:textColor="#D703082B"
+                        android:fontFamily="sans-serif-black"/>
+
+
+                    <TextView
+                        android:id="@+id/viewentry_activity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Activity"
+                        android:textSize="30dp"
+                        android:textColor="#a0616a"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:id="@+id/viewentry_datetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date and Time"
+                        android:textSize="20dp"
+                        android:textColor="#6e626d"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:id="@+id/viewentry_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Description"
+                        android:textSize="20dp"
+                        android:textColor="#8f8f8f"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <ImageView
+                        android:id="@+id/viewentry_image"
+                        android:layout_width="330dp"
+                        android:layout_height="390dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+
+        </RelativeLayout>
+    </LinearLayout>
     </ScrollView>
-
-
 </LinearLayout>
