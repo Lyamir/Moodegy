@@ -49,21 +49,11 @@ class MoodEntryAdapter(
     override fun onBindViewHolder(holder: MoodEntryAdapter.ViewHolder, position: Int) {
             val currentItem = moodEntryList[position]
             holder.dateView.text = currentItem.dateTime
-            for (mood in moodList){
-                if(mood.id == moodEntryList[position].moodID){
-                    holder.moodView.text = mood.name
-                    break
-                }
-            }
+            holder.moodView.text = currentItem.moodName
 
             for(activityEntry in activityEntryList){
-                if(currentItem.id == activityEntry.moodEntryID){
-                    for(activity in activityList){
-                        if(activityEntry.activityID == activity.id){
-                            holder.activityView.text = activity.name
-                            break
-                        }
-                    }
+                if(activityEntry.moodEntryID == currentItem.id){
+                    holder.activityView.text = activityEntry.activityName
                 }
             }
 

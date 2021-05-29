@@ -28,7 +28,7 @@ class MoodStatsAdapter(
         holder.moodView.text = currentItem.name
         var counter = 0
         for(entry in moodEntryList){
-            if(entry.moodID == currentItem.id){
+            if(entry.moodName == currentItem.name){
                 counter++
             }
         }

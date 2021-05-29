@@ -10,17 +10,12 @@ import androidx.room.*
             entity = MoodEntry::class,
             parentColumns = ["id"],
             childColumns = ["moodEntryID"],
-            onDelete = ForeignKey.CASCADE),
-        ForeignKey(
-            entity = Activity::class,
-            parentColumns = ["id"],
-            childColumns = ["activityID"],
-            onDelete = ForeignKey.CASCADE)
-        ])
+            onDelete = ForeignKey.CASCADE)])
 data class ActivityEntry(
     @ColumnInfo(index = true)
     val moodEntryID: Int,
     @ColumnInfo(index = true)
-    val activityID: Int
+    val activityID: Int,
+    val activityName: String
 )
 
