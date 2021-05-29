@@ -10,12 +10,3 @@ data class Activity(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val name: String
 )
-
-data class AllActivitiesInAnActivityEntry(
-    @Embedded val activityEntry: ActivityEntry,
-    @Relation(
-        parentColumn = "id",
-        entityColumn = "activityID"
-    )
-    val entries: List<ActivityEntry>
-)

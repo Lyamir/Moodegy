@@ -112,7 +112,7 @@ class AddMoodEntryActivity : AppCompatActivity() {
 
             for(mood in moodList){
                 if(mood.name == selectmood_autocompletetextview.text.toString()){
-                    moodEntryDao.insert(MoodEntry(0, answer, mood.id))
+                    moodEntryDao.insert(MoodEntry(0, answer, mood.name))
                     break
                 }
             }
@@ -121,7 +121,7 @@ class AddMoodEntryActivity : AppCompatActivity() {
 
             for(activity in activityList){
                 if(activity.name == selectactivity_autocompletetextview.text.toString()){
-                    activityEntryDao.insert(ActivityEntry(moodEntry.id, activity.id))
+                    activityEntryDao.insert(ActivityEntry(moodEntry.id, activity.id, activity.name))
                 }
             }
 

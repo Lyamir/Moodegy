@@ -22,8 +22,8 @@ class ViewMoodEntry : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         val db = AppDatabase.getDatabase(this)
         val moodDao = db.moodDao()
         val activityDao = db.activityDao()
@@ -31,8 +31,6 @@ class ViewMoodEntry : AppCompatActivity() {
         val photoDao = db.photoDao()
         val descriptionDao = db.descDao()
 
-        val moodList = moodDao.getAll()
-        val activityList = activityDao.getAll()
         val activityEntryList = activityEntryDao.getAll()
 
         moodEntry = Gson().fromJson(intent.getStringExtra("moodEntry"), MoodEntry::class.java)
@@ -49,19 +47,11 @@ class ViewMoodEntry : AppCompatActivity() {
         else
             viewentry_image.setImageBitmap(photo.photo)
 
-        for(mood in moodList){
-            if(moodEntry.moodID == mood.id){
-                viewentry_mood.text = mood.name
-                break
-            }
-        }
+        viewentry_mood.text = moodEntry.moodName
 
         for(activityEntry in activityEntryList){
             if(activityEntry.moodEntryID == moodEntry.id){
-                for(activity in activityList){
-                    if(activityEntry.activityID == activity.id)
-                        viewentry_activity.text = activity.name
-                }
+                viewentry_activity.text = activityEntry.activityName
             }
         }
 
