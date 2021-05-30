@@ -125,13 +125,15 @@
                 android:layout_height="80dp"
                 app:srcCompat="@android:drawable/ic_menu_gallery" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/uploadpicture_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:text="Add Photo"
-                app:cornerRadius="5dp" />
+                android:textColor="#FFFFFF"
+                android:background="@drawable/button_style"
+                android:backgroundTint="@null"/>
 
             <ImageView
                 android:id="@+id/removepicture_btn"
@@ -164,7 +166,7 @@
                 android:scrollbars="vertical"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+        <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/addmoodentry_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -172,7 +174,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="32dp"
         android:text="Add Mood Entry"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@null"/>
 
 
     </LinearLayout>

@@ -16,154 +16,154 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/header_bg">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="30dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="How are you feeling?"
-                android:textSize="30dp"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-black"/>
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <Button
-                android:id="@+id/btn_addmoodentry"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/header_bg">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="How are you feeling?"
+                        android:textSize="30dp"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-black"/>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <Button
+                        android:id="@+id/btn_addmoodentry"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="25dp"
+                        android:text="Add A Mood Entry"
+                        android:textColor="#D703082B"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:background="@drawable/addentry_bg"
+                        app:backgroundTint="@null" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginTop="30dp"
+                            android:elevation="100dp"
+                            android:text="Add"
+                            android:textSize="30dp"
+                            android:textColor="#D703082B"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginTop="55dp"
+                            android:elevation="100dp"
+                            android:text="Mood"
+                            android:textSize="30dp"
+                            android:textColor="#D703082B"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/btn_addmood"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/addmood_bg"
+                            app:backgroundTint="@null" />
+
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="gravity"
+                            android:layout_marginLeft="100dp"
+                            android:layout_marginTop="30dp"
+                            android:elevation="100dp"
+                            android:text="Add"
+                            android:textSize="30dp"
+                            android:textColor="#D703082B"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="55dp"
+                            android:layout_marginTop="55dp"
+                            android:elevation="100dp"
+                            android:text="Activity"
+                            android:textSize="30dp"
+                            android:textColor="#D703082B"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/btn_addactivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/addactivity_bg"
+                            android:layout_marginLeft="5dp"
+                            app:backgroundTint="@null"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="25dp"
-                android:text="Add A Mood Entry"
-                android:textColor="#D703082B"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:background="@drawable/addentry_bg"
-                app:backgroundTint="@null" />
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_margin="5dp"
                     android:elevation="100dp"
-                    android:text="Add"
-                    android:textSize="30dp"
-                    android:textColor="#D703082B"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="55dp"
-                    android:elevation="100dp"
-                    android:text="Mood"
+                    android:text="Recent Entries"
                     android:textSize="30dp"
                     android:textColor="#D703082B"
                     android:textStyle="bold"/>
 
-                <Button
-                    android:id="@+id/btn_addmood"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/addmood_bg"
-                    app:backgroundTint="@null" />
-
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="gravity"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginTop="30dp"
-                    android:elevation="100dp"
-                    android:text="Add"
-                    android:textSize="30dp"
-                    android:textColor="#D703082B"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="55dp"
-                    android:layout_marginTop="55dp"
-                    android:elevation="100dp"
-                    android:text="Activity"
-                    android:textSize="30dp"
-                    android:textColor="#D703082B"
-                    android:textStyle="bold"/>
-
-                <Button
-                    android:id="@+id/btn_addactivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/addactivity_bg"
-                    android:layout_marginLeft="5dp"
-                    app:backgroundTint="@null"/>
-
-            </RelativeLayout>
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:elevation="100dp"
-                android:text="Recent Entries"
-                android:textSize="30dp"
-                android:textColor="#D703082B"
-                android:textStyle="bold"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/main_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/main_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
 
 
 
