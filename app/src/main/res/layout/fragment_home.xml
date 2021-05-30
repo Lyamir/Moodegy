@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/bg_new">
+        android:background="@drawable/bg">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -34,15 +34,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/logo_ver2"/>
-
             <Button
                 android:id="@+id/btn_addmoodentry"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="25dp"
@@ -50,10 +45,8 @@
                 android:textColor="#D703082B"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:background="#f6f1eb"
+                android:background="@drawable/addentry_bg"
                 app:backgroundTint="@null" />
-
-
 
         </RelativeLayout>
 
