@@ -133,6 +133,13 @@
                 android:text="Add Photo"
                 app:cornerRadius="5dp" />
 
+            <ImageView
+                android:id="@+id/removepicture_btn"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="40dp"
+                android:src="@drawable/delete_icon"/>
+
 
         </LinearLayout>
 
