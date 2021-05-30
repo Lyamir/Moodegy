@@ -4,7 +4,7 @@ import androidx.room.*
 
 @Entity(
     tableName = "activity_entry",
-    primaryKeys = ["moodEntryID", "activityID"],
+    primaryKeys = ["moodEntryID"],
     foreignKeys =
         [ForeignKey(
             entity = MoodEntry::class,
