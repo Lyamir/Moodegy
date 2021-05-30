@@ -10,7 +10,7 @@ import com.mobdeve.dobleteope.moodegy.data.ActivityEntry
 import kotlinx.android.synthetic.main.stats_card.view.*
 
 class ActivityStatsAdapter(
-    private val activityList: List<Activity>,
+    private val activityList: List<String>,
     private val activityEntryList: List<ActivityEntry>
     ): RecyclerView.Adapter<ActivityStatsAdapter.ViewHolder>() {
 
@@ -25,10 +25,10 @@ class ActivityStatsAdapter(
 
     override fun onBindViewHolder(holder: ActivityStatsAdapter.ViewHolder, position: Int) {
         val currentItem = activityList[position]
-        holder.activityView.text = currentItem.name
+        holder.activityView.text = currentItem
         var counter = 0
         for(entry in activityEntryList){
-            if(entry.activityID == currentItem.id){
+            if(entry.activityName == currentItem){
                 counter++
             }
         }

@@ -4,6 +4,7 @@ import androidx.room.*
 import java.sql.Blob
 
 @Entity(tableName = "description",
+    primaryKeys = ["id"],
         foreignKeys =
             [ForeignKey(
                 entity = MoodEntry::class,
@@ -12,7 +13,7 @@ import java.sql.Blob
                 onDelete = ForeignKey.CASCADE)
             ])
 data class Description(
-    @PrimaryKey val id: Int,
+    val id: Int,
     val text: String
 )
 

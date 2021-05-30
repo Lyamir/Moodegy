@@ -42,7 +42,7 @@ class HomeFragment : Fragment(), MoodEntryAdapter.OnMoodEntryClickListener {
             startActivity(intent)
         }
 
-        btn_addmoodentry?.setOnClickListener{ view ->
+        btn_addmoodentry.setOnClickListener{ view ->
             val intent = Intent(activity, AddMoodEntryActivity::class.java)
             startActivity(intent)
         }
