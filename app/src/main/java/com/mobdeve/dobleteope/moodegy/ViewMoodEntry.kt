@@ -22,11 +22,9 @@ class ViewMoodEntry : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         val db = AppDatabase.getDatabase(this)
-        val moodDao = db.moodDao()
-        val activityDao = db.activityDao()
         val activityEntryDao = db.activityEntryDao()
         val photoDao = db.photoDao()
         val descriptionDao = db.descDao()
