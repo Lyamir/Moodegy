@@ -106,6 +106,7 @@ class UpdateMoodEntryActivity : AppCompatActivity() {
         }
 
         updatemoodentry_btn.setOnClickListener{
+            val id = moodEntry.id
             var activityID: Int = 0
             for(activity in activityList){
                 if(activity.name == updateactivity_autocompletetextview.text.toString()){
@@ -113,9 +114,9 @@ class UpdateMoodEntryActivity : AppCompatActivity() {
                     break
                 }
             }
-            activityEntryDao.update(ActivityEntry(moodEntry.id, activityID, updateactivity_autocompletetextview.text.toString()))
+            activityEntryDao.update(ActivityEntry(id, activityID, updateactivity_autocompletetextview.text.toString()))
 
-            moodEntryDao.update(MoodEntry(moodEntry.id, moodEntry.dateTime, updatemood_autocompletetextview.text.toString()))
+            moodEntryDao.update(MoodEntry(id, moodEntry.dateTime, updatemood_autocompletetextview.text.toString()))
 
 
             updatepicture_view.invalidate()
@@ -123,11 +124,17 @@ class UpdateMoodEntryActivity : AppCompatActivity() {
             val bitmap = drawable.bitmap
 
             if(withPhoto){
-                photoDao.update(Photo(moodEntry.id, bitmap))
+                if(photo == null)
+                    photoDao.insert(Photo(moodEntry.id, bitmap))
+                else
+                    photoDao.update(Photo(moodEntry.id, bitmap))
             }
 
             if(updatedescription_edittext.text.toString().isNotEmpty()){
-                descriptionDao.update(Description(moodEntry.id, updatedescription_edittext.text.toString()))
+                if(description == null)
+                    descriptionDao.insert(Description(moodEntry.id, updatedescription_edittext.text.toString()))
+                else
+                    descriptionDao.update(Description(moodEntry.id, updatedescription_edittext.text.toString()))
             }
 
             finish()
