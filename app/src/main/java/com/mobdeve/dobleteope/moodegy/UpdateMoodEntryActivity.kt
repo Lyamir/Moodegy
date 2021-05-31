@@ -1,6 +1,6 @@
 package com.mobdeve.dobleteope.moodegy
 
-import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.google.gson.Gson
 import com.mobdeve.dobleteope.moodegy.data.*
+import com.mobdeve.dobleteope.moodegy.data.daos.*
 import kotlinx.android.synthetic.main.activity_updatemoodentry.*
 import java.io.File
 
@@ -21,50 +22,41 @@ private const val REQUEST_CODE = 11
 private const val FILE_NAME = "photo.jpg"
 private lateinit var photoFile: File
 class UpdateMoodEntryActivity : AppCompatActivity() {
+    lateinit var db: AppDatabase
+    lateinit var moodEntryDao: MoodEntryDao
+    lateinit var moodDao: MoodDao
+    lateinit var activityDao: ActivityDao
+    lateinit var activityEntryDao: ActivityEntryDao
+    lateinit var photoDao: PhotoDao
+    lateinit var descriptionDao: DescriptionDao
 
+    lateinit var moodList: List<Mood>
+    lateinit var activityList: List<Activity>
+    lateinit var activityEntry: ActivityEntry
+
+    lateinit var newMoodList: ArrayList<String>
+    lateinit var  newActivityList: ArrayList<String>
+    lateinit var moodEntry: MoodEntry
     private var withPhoto: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_updatemoodentry)
-
         withPhoto = false
 
-        val moodEntry: MoodEntry = Gson().fromJson(intent.getStringExtra("moodEntry"), MoodEntry::class.java)
-        val db = AppDatabase.getDatabase(this)
-        val moodEntryDao = db.moodEntryDao()
-        val moodDao = db.moodDao()
-        val activityDao = db.activityDao()
-        val activityEntryDao = db.activityEntryDao()
-        val photoDao = db.photoDao()
-        val descriptionDao = db.descDao()
+        moodEntry = Gson().fromJson(intent.getStringExtra("moodEntry"), MoodEntry::class.java)
 
-        val moodList = moodDao.getAll()
-        val activityList = activityDao.getAll()
-        val activityEntry = activityEntryDao.getEntryFromMoodID(moodEntry.id)
 
-        val newMoodList = ArrayList<String>()
-        val newActivityList = ArrayList<String>()
 
-        for(mood in moodList)
-            newMoodList.add(mood.name)
+        db = AppDatabase.getDatabase(this)
+        moodEntryDao = db.moodEntryDao()
+        moodDao = db.moodDao()
+        activityDao = db.activityDao()
+        activityEntryDao = db.activityEntryDao()
+        photoDao = db.photoDao()
+        descriptionDao = db.descDao()
 
-        if(!newMoodList.contains(moodEntry.moodName))
-            newMoodList.add(moodEntry.moodName)
-
-        for(activity in activityList)
-            newActivityList.add(activity.name)
-
-        if(!newActivityList.contains(activityEntry.activityName))
-            newActivityList.add(activityEntry.activityName)
-
-        val moodListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newMoodList)
-        updatemood_autocompletetextview.setText(moodEntry.moodName)
-        updatemood_autocompletetextview.setAdapter(moodListAdapter)
-
-        val activityListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newActivityList)
-        updateactivity_autocompletetextview.setText(activityEntry.activityName)
-        updateactivity_autocompletetextview.setAdapter(activityListAdapter)
+        activityEntry = activityEntryDao.getEntryFromMoodID(moodEntry.id)
 
         val description = descriptionDao.getActivity(moodEntry.id)
         if (description != null)
@@ -161,12 +153,46 @@ class UpdateMoodEntryActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
+        if (requestCode == REQUEST_CODE && resultCode == android.app.Activity.RESULT_OK){
             val image = BitmapFactory.decodeFile(photoFile.absolutePath)
             withPhoto = true
             updatepicture_view.setImageBitmap(image)
         }
         super.onActivityResult(requestCode, resultCode, data)
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        moodList = moodDao.getAll()
+        activityList = activityDao.getAll()
+
+        newMoodList = ArrayList<String>()
+        newActivityList = ArrayList<String>()
+
+        for(mood in moodList)
+            newMoodList.add(mood.name)
+
+        if(!newMoodList.contains(moodEntry.moodName))
+            newMoodList.add(moodEntry.moodName)
+
+        for(activity in activityList)
+            newActivityList.add(activity.name)
+
+        if(!newActivityList.contains(activityEntry.activityName))
+            newActivityList.add(activityEntry.activityName)
+
+        val moodListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newMoodList)
+        moodListAdapter.notifyDataSetChanged()
+        updatemood_autocompletetextview.setText(moodEntry.moodName)
+        updatemood_autocompletetextview.setAdapter(moodListAdapter)
+
+
+        val activityListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newActivityList)
+        activityListAdapter.notifyDataSetChanged()
+        updateactivity_autocompletetextview.setText(activityEntry.activityName)
+        updateactivity_autocompletetextview.setAdapter(activityListAdapter)
 
     }
 

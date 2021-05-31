@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.mobdeve.dobleteope.moodegy.data.*
+import com.mobdeve.dobleteope.moodegy.data.daos.*
 import kotlinx.android.synthetic.main.activity_addmoodentry.*
 import java.io.File
 import java.text.SimpleDateFormat
@@ -28,6 +29,16 @@ private const val REQUEST_CODE = 11
 private const val FILE_NAME = "photo.jpg"
 private lateinit var photoFile: File
 class AddMoodEntryActivity : AppCompatActivity() {
+    lateinit var db: AppDatabase
+    lateinit var moodEntryDao: MoodEntryDao
+    lateinit var moodDao: MoodDao
+    lateinit var activityDao: ActivityDao
+    lateinit var activityEntryDao: ActivityEntryDao
+    lateinit var photoDao: PhotoDao
+    lateinit var descriptionDao: DescriptionDao
+
+    lateinit var moodList: List<Mood>
+    lateinit var activityList: List<com.mobdeve.dobleteope.moodegy.data.Activity>
 
     private var withPhoto: Boolean = false
 
@@ -38,31 +49,15 @@ class AddMoodEntryActivity : AppCompatActivity() {
         withPhoto = false
 
 
-        val db = AppDatabase.getDatabase(this)
-        val moodEntryDao = db.moodEntryDao()
-        val moodDao = db.moodDao()
-        val activityDao = db.activityDao()
-        val activityEntryDao = db.activityEntryDao()
-        val photoDao = db.photoDao()
-        val descriptionDao = db.descDao()
+        db = AppDatabase.getDatabase(this)
+        moodEntryDao = db.moodEntryDao()
+        moodDao = db.moodDao()
+        activityDao = db.activityDao()
+        activityEntryDao = db.activityEntryDao()
+        photoDao = db.photoDao()
+        descriptionDao = db.descDao()
 
-        val moodList = moodDao.getAll()
-        val activityList = activityDao.getAll()
 
-        val newMoodList = ArrayList<String>()
-        for (mood in moodList){
-            newMoodList.add(mood.name)
-        }
-
-        val newActivityList = ArrayList<String>()
-        for (activity in activityList){
-            newActivityList.add(activity.name)
-        }
-
-        val moodListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newMoodList)
-        selectmood_autocompletetextview.setAdapter(moodListAdapter)
-        val activityListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newActivityList)
-        selectactivity_autocompletetextview.setAdapter(activityListAdapter)
 
         editactivities_textview.setOnClickListener{
             val intent = Intent(this, ViewActivities::class.java)
@@ -161,5 +156,26 @@ class AddMoodEntryActivity : AppCompatActivity() {
         }
         super.onActivityResult(requestCode, resultCode, data)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        moodList = moodDao.getAll()
+        activityList = activityDao.getAll()
+
+        val newMoodList = ArrayList<String>()
+        for (mood in moodList){
+            newMoodList.add(mood.name)
+        }
+
+        val newActivityList = ArrayList<String>()
+        for (activity in activityList){
+            newActivityList.add(activity.name)
+        }
+
+        val moodListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newMoodList)
+        selectmood_autocompletetextview.setAdapter(moodListAdapter)
+        val activityListAdapter = ArrayAdapter(this, R.layout.dropdown_item, newActivityList)
+        selectactivity_autocompletetextview.setAdapter(activityListAdapter)
     }
 }
