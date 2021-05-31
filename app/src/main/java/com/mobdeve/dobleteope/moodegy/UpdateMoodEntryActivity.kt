@@ -8,18 +8,13 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.google.gson.Gson
 import com.mobdeve.dobleteope.moodegy.data.*
-import kotlinx.android.synthetic.main.activity_addmoodentry.*
 import kotlinx.android.synthetic.main.activity_updatemoodentry.*
-import kotlinx.android.synthetic.main.activity_updatemoodentry.editactivities_textview
-import kotlinx.android.synthetic.main.activity_updatemoodentry.editmoods_textview
-import kotlinx.android.synthetic.main.activity_viewmoodentry.*
 import java.io.File
 
 private const val REQUEST_CODE = 11
@@ -105,6 +100,13 @@ class UpdateMoodEntryActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        removepicture_btn.setOnClickListener{
+            if(withPhoto){
+                updatepicture_view.setImageBitmap(null)
+                withPhoto = false
+            }
+        }
+
         updatemoodentry_btn.setOnClickListener{
             val id = moodEntry.id
             var activityID: Int = 0
@@ -135,6 +137,10 @@ class UpdateMoodEntryActivity : AppCompatActivity() {
                     descriptionDao.insert(Description(moodEntry.id, updatedescription_edittext.text.toString()))
                 else
                     descriptionDao.update(Description(moodEntry.id, updatedescription_edittext.text.toString()))
+            }
+            else{
+                if(description != null)
+                    descriptionDao.delete(Description(moodEntry.id, description.text))
             }
 
             finish()

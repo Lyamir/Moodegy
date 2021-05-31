@@ -74,6 +74,13 @@ class AddMoodEntryActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        removepicture_btn.setOnClickListener{
+            if(withPhoto){
+                uploadpicture_view.setImageBitmap(null)
+                withPhoto = false
+            }
+        }
+
         uploadpicture_btn.setOnClickListener{
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             photoFile = getPhotoFile(FILE_NAME)
