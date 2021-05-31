@@ -35,6 +35,7 @@ class NotificationReceiver: BroadcastReceiver() {
              .setPriority(NotificationCompat.PRIORITY_HIGH)
              .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
              .setContentIntent(resultPendingIntent)
+             .setAutoCancel(true)
          val notifManager: NotificationManagerCompat = NotificationManagerCompat.from(context)
 
         val db = AppDatabase.getDatabase(context)
