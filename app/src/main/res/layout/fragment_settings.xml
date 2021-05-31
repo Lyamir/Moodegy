@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#f3f4f9"
     tools:context=".fragments.SettingsFragment">
 
@@ -69,10 +70,12 @@
                        android:id="@+id/notification_switch"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:layout_marginTop="9dp"
                        android:layout_marginLeft="190dp"
+                       android:layout_marginTop="9dp"
+                       android:checked="true"
+                       android:visibility="visible"
                        android:thumb="@drawable/thumb"
-                       android:track="@drawable/track"/>
+                       android:track="@drawable/track" />
 
 
                </LinearLayout>
