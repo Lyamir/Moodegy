@@ -79,7 +79,7 @@ class SettingsFragment : Fragment() {
                 AlarmManager.INTERVAL_DAY,
                 pendingIntent)
 
-            Toast.makeText(activity, "Notification Time set!}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Notification Time set!", Toast.LENGTH_SHORT).show()
         }
 
 
