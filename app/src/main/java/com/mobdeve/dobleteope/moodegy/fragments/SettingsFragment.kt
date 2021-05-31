@@ -65,6 +65,7 @@ class SettingsFragment : Fragment() {
 
         setTime.setOnClickListener {
             alarmManager.cancel(pendingIntent)
+
             val calendar: Calendar = Calendar.getInstance().apply {
                 timeInMillis = System.currentTimeMillis()
                 set(Calendar.HOUR_OF_DAY, timepicker.hour)
