@@ -16,7 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TimePicker
-import androidx.annotation.RequiresApi
+import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import com.mobdeve.dobleteope.moodegy.NotificationReceiver
 import com.mobdeve.dobleteope.moodegy.R
@@ -35,7 +35,6 @@ class SettingsFragment : Fragment() {
 
         createNotificationChannel()
         timepicker.isEnabled = true
-
         val intent: Intent = Intent(requireContext(), NotificationReceiver::class.java)
         val pendingIntent: PendingIntent = PendingIntent.getBroadcast(requireContext(), 0, intent, 0)
 
@@ -50,7 +49,9 @@ class SettingsFragment : Fragment() {
                     set(Calendar.MINUTE, timepicker.minute)
                     set(Calendar.SECOND, 0)
                 }
-
+                Log.d("uwu", isChecked.toString())
+                Log.d("uwu", timepicker.hour.toString())
+                Log.d("uwu", timepicker.minute.toString())
                 alarmManager.setInexactRepeating(
                     AlarmManager.RTC_WAKEUP,
                     calendar.timeInMillis,
@@ -76,12 +77,15 @@ class SettingsFragment : Fragment() {
                 calendar.timeInMillis,
                 AlarmManager.INTERVAL_DAY,
                 pendingIntent)
+
+            Toast.makeText(activity, "Notification Time set!}", Toast.LENGTH_SHORT).show()
         }
 
 
         return view
 
     }
+
 
     private fun createNotificationChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
