@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -41,16 +40,13 @@ class NotificationReceiver: BroadcastReceiver() {
         val db = AppDatabase.getDatabase(context)
         val moodEntryDao = db.moodEntryDao()
         val moodEntryList = moodEntryDao.getAll()
-        Log.d("uwu", "created~")
 
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.")
         val currentDate: String = current.format(formatter)
-        Log.d("uwu currentDate", currentDate)
         var finder: Boolean = false
         for(mood in moodEntryList){
             val date = mood.dateTime.split(" ")[0]
-            Log.d("uwu", date)
             if(date == currentDate){
                 finder = true
                 break
