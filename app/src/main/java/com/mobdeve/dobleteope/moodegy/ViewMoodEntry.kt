@@ -25,6 +25,7 @@ class ViewMoodEntry : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val db = AppDatabase.getDatabase(this)
+        val moodEntryDao = db.moodEntryDao()
         val activityEntryDao = db.activityEntryDao()
         val photoDao = db.photoDao()
         val descriptionDao = db.descDao()
@@ -32,6 +33,9 @@ class ViewMoodEntry : AppCompatActivity() {
         val activityEntryList = activityEntryDao.getAll()
 
         moodEntry = Gson().fromJson(intent.getStringExtra("moodEntry"), MoodEntry::class.java)
+
+        moodEntry = moodEntryDao.getMoodEntry(moodEntry.id)
+
         viewentry_datetime.text = moodEntry.dateTime
         val description = descriptionDao.getActivity(moodEntry.id)
         if (description == null)
